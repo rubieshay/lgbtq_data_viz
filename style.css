@@ -1,0 +1,169 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    line-height: 1;
+    border: none;
+    outline: none;
+    border-radius: 0;
+    background: none;
+}
+:root {
+    --dark: #192e63;
+    --shadow: #192e63aa;
+    --light: #7683ab;
+    --white: #ffffff;
+}
+body {
+    font-family: "allotrope-variable", sans-serif;
+    font-variation-settings: "wght" 400, "wdth" 100;
+    height: 100dvh;
+    color: var(--dark);
+    overflow-y: hidden;
+}
+
+/* BACKGROUND */
+
+main::after, main::before {
+    content: "";
+}
+main::after, main::before, #graph-background {
+    position: fixed;
+    background-repeat: no-repeat;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+main::after {
+    width: 150vmax;
+    height: 150vmax;
+    transition: rotate 1s;
+    background-image: conic-gradient(from 60deg, #dcb7cd 0deg, #f7e9a3 120deg, #a0c5d8 240deg, #dcb7cd 360deg);
+    z-index: -10;
+}
+main::before {
+    width: 100%;
+    height: 100dvh;
+    background-image: radial-gradient(#ffffffff 0%, #ffffff00 70%);
+    z-index: -9;
+}
+main.rotate-sect::after {
+    rotate: 180deg;
+}
+#graph-background {
+    width: 0;
+    height: 100dvh;
+    background-image: linear-gradient(90deg, #ffffff00 0%, 15%, #ffffffff 50%, 85%, #ffffff00 100%);
+    z-index: -8;
+    opacity: 0;
+    pointer-events: none;
+    transition: width 1s, opacity 1s;
+}
+main.graph-sect #graph-background {
+    width: 100vw;
+    opacity: 1;
+}
+
+
+/* SECTIONS */
+
+main {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+}
+section {
+    scroll-snap-stop: always;
+    scroll-snap-align: start;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+h1, h2 {
+    line-height: 1.2;
+    width: min(60rem, 90vw);
+    text-align: center;
+    text-wrap: pretty;
+}
+h1 {
+    font-size: 3rem;
+}
+h2 {
+    font-size: 1.75rem;
+}
+figure {
+    font-size: 1.75rem;
+}
+blockquote {
+    font-family: "allotrope-variable", sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    width: min(40rem, 60vw);
+    text-wrap: pretty;
+    color: var(--dark);
+    position: relative;
+    display: none;
+    opacity: 0;
+    transition: opacity 1s;
+}
+blockquote.quote-active {
+    display: block;
+    opacity: 1;
+}
+blockquote::before, blockquote::after {
+    content: "";
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    background-image: url(quotes.svg);
+    position: absolute;
+}
+blockquote::before {
+    rotate: 180deg;
+    left: 0;
+    top: 0;
+    translate: 0% -120%;
+}
+blockquote::after {
+    right: 0;
+    bottom: 0;
+    translate: 0% 120%;
+}
+.anecdotes button {
+    width: 3rem;
+    height: 3rem;
+    margin-inline: 2rem;
+    cursor: pointer;
+    transition: scale 0.3s;
+}
+.anecdotes button:hover {
+    scale: 1.2;
+}
+.anecdotes button:first-of-type {
+    rotate: 180deg;
+}
+
+/* FOOTER */
+
+#content-5 {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+footer {
+    position: absolute;
+    bottom: 2rem;
+}
+a {
+    color: var(--light);
+}
+
+/* TABLEAU GRAPHS */
+
+.tableauPlaceholder, .tableauPlaceholder iframe {
+    width: 80vw;
+    height: 50vh;
+}
