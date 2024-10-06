@@ -9,20 +9,20 @@ document.addEventListener("DOMContentLoaded", function() {
             mainContainer.classList.add("rotate-sect");
         }
 
-        let graphPanels = [4, 7, 9, 12, 15, 17 ];
-        let needPanel = false;
-        for (let i = 0; i < graphPanels.length; i++) {
-            const panel = graphPanels[i];
-            if (panelNum > panel - 1.5 && panelNum < panel - 0.5) {
-                needPanel = true;
-                break;
-            }
-        }
-        if (needPanel) {
-            mainContainer.classList.add("graph-sect");
-        } else {
-            mainContainer.classList.remove("graph-sect");
-        }
+        // let graphPanels = [4, 7, 9, 12, 15, 17 ];
+        // let needPanel = false;
+        // for (let i = 0; i < graphPanels.length; i++) {
+        //     const panel = graphPanels[i];
+        //     if (panelNum > panel - 1.5 && panelNum < panel - 0.5) {
+        //         needPanel = true;
+        //         break;
+        //     }
+        // }
+        // if (needPanel) {
+        //     mainContainer.classList.add("graph-sect");
+        // } else {
+        //     mainContainer.classList.remove("graph-sect");
+        // }
     });
 });
 
