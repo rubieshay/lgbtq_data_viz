@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
             mainContainer.classList.add("rotate-sect");
         }
 
-        let graphPanels = [4, 7, 8, 11, 14, 15];
+        let graphPanels = [4, 7, 9, 12, 15, 17 ];
         let needPanel = false;
         for (let i = 0; i < graphPanels.length; i++) {
             const panel = graphPanels[i];
@@ -26,15 +26,15 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-function quoteButton(groupID, direction, max) {
-    let active = document.querySelector("#anecdotes-" + groupID.toString() + " .quote-active");
-    active.classList.remove("quote-active");
-    let nextID = parseInt(active.id.toString().slice(-1)) + direction;
-    if (nextID == 0) {
-        nextID = max;
-    } else if (nextID > max) {
-        nextID = 1;
-    }
-    let next = document.getElementById("quote-" + groupID.toString() + "-" + nextID.toString());
-    next.classList.add("quote-active");
-}
+// function quoteButton(groupID, direction, max) {
+//     let active = document.querySelector("#anecdotes-" + groupID.toString() + " .quote-active");
+//     active.classList.remove("quote-active");
+//     let nextID = parseInt(active.id.toString().slice(-1)) + direction;
+//     if (nextID == 0) {
+//         nextID = max;
+//     } else if (nextID > max) {
+//         nextID = 1;
+//     }
+//     let next = document.getElementById("quote-" + groupID.toString() + "-" + nextID.toString());
+//     next.classList.add("quote-active");
+// }
