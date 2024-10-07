@@ -109,15 +109,15 @@ h2 {
     text-wrap: balance;
 }
 blockquote {
-    font-family: "nicholas", sans-serif;
-    font-weight: 400;
-    font-style: italic;
     display: flex;
     flex-direction: column;
 }
 blockquote p {
-    font-size: 1.5rem;
-    line-height: 1.25;
+    font-family: "nicholas", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.2;
     color: var(--dark);
     text-wrap: pretty;
 }
@@ -132,6 +132,14 @@ blockquote p {
 .quote-right {
     align-self: end;
 }
+a {
+    color: var(--light);
+    margin-top: 0.5rem;
+    display: block;
+}
+blockquote a {
+    text-align: center;
+}
 
 
 /* SECTION GRIDS */
@@ -141,14 +149,21 @@ section {
 }
 .content {
     display: grid;
-    grid-template-columns: auto 0.125rem auto auto;
-    grid-template-rows: auto 0.125rem auto;
-    grid-template-areas: "title title title .    "
-                         "rule1 rule1 rule1 rule1"
-                         "quote rule2 graph graph";
+    grid-template-columns: 1fr 0.125rem 2fr 0.125rem 1fr;
+    grid-template-rows: 1fr 0.125rem 3fr;
     gap: 1rem;
     align-items: center;
     justify-content: center;
+}
+.content-layout-1 {
+    grid-template-areas: "title title title rule1 .    "
+                         "rule2 rule2 rule2 rule2 rule2"
+                         "quote rule3 graph graph graph";
+}
+.content-layout-2 {
+    grid-template-areas: ".     rule1 title title title"
+                         "rule2 rule2 rule2 rule2 rule2"
+                         "graph graph graph rule3 quote";
 }
 .content h2 {
     grid-area: title;
@@ -160,23 +175,31 @@ section {
     grid-area: graph;
     width: 100%;
     height: 100%;
-    background: #ffffff55;
+    background: #ffffff66;
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
+}
+.rule {
+    background: var(--dark);
 }
 .rule-h {
     width: 100%;
     height: 0.125rem;
-    background: var(--dark);
-    grid-area: rule1;
 }
 .rule-v {
     width: 0.125rem;
     height: 100%;
-    background: var(--dark);
+}
+.rule-1 {
+    grid-area: rule1;
+}
+.rule-2 {
     grid-area: rule2;
+}
+.rule-3 {
+    grid-area: rule3;
 }
 
 /* GRAPHS */
@@ -194,15 +217,14 @@ figure {
     grid-template-areas: "sat sal gph key"
                          ".   .   bal .  "
                          ".   .   bat .  ";
-    grid-template-columns: min-content min-content 1fr min-content;
-    grid-template-rows: 1fr min-content min-content;
+    grid-template-columns: auto auto 1fr auto;
+    grid-template-rows: 1fr auto auto;
     text-align: center;
     flex: 1;
 }
 .chart {
     grid-area: gph;
     display: block;
-    padding-block: 0.5rem;
     width: 100%;
     height: 100%;
 }
@@ -242,6 +264,10 @@ figure {
     gap: 0.5rem;
     margin-left: 0.5rem;
     grid-area: key;
+    justify-content: center;
+}
+.key-title {
+    justify-content: center;
 }
 .key-color {
     width: 0.75rem;
@@ -264,12 +290,7 @@ figcaption {
     align-items: center;
     flex: 0;
 }
-figcaption a {
-    color: var(--light);
-    margin-top: 0.5rem;
-    display: block;
-}
 figcaption p {
     display: block;
-    max-width: 40rem;
+    max-width: 35rem;
 }
