@@ -118,6 +118,8 @@ blockquote p {
     font-style: italic;
     font-size: 1.25rem;
     line-height: 1.2;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
     color: var(--dark);
     text-wrap: pretty;
 }
@@ -140,20 +142,38 @@ a {
 blockquote a {
     text-align: center;
 }
+#intro h2, #outro h2 {
+    max-width: 50rem;
+}
 
 
 /* SECTION GRIDS */
 
 section {
     padding: 2rem;
+    position: relative;
 }
 .content {
     display: grid;
-    grid-template-columns: 1fr 0.125rem 2fr 0.125rem 1fr;
-    grid-template-rows: 1fr 0.125rem 3fr;
+    grid-template-columns: 1fr 0.1rem 1.5fr 0.1rem 1fr;
+    grid-template-rows: 1fr 0.1rem 3fr;
     gap: 1rem;
     align-items: center;
     justify-content: center;
+}
+.content::before, .content::after {
+    content: "";
+    position: absolute;
+    width: calc(100% - 4rem);
+    margin-inline: 2rem;
+    height: 0.05rem;
+    background: var(--dark);
+}
+.content::after {
+    bottom: 0.1rem;
+}
+.content::before {
+    top: 0.1rem;
 }
 .content-layout-1 {
     grid-template-areas: "title title title rule1 .    "
@@ -186,10 +206,10 @@ section {
 }
 .rule-h {
     width: 100%;
-    height: 0.125rem;
+    height: 0.1rem;
 }
 .rule-v {
-    width: 0.125rem;
+    width: 0.1rem;
     height: 100%;
 }
 .rule-1 {
@@ -284,7 +304,6 @@ figcaption {
     font-family: "nicholas", sans-serif;
     font-weight: 400;
     font-style: normal;
-    height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -293,4 +312,5 @@ figcaption {
 figcaption p {
     display: block;
     max-width: 35rem;
+    line-height: 1.2;
 }
