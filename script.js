@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     let mainContainer = document.getElementById("main-container");
+    let introContent = document.getElementById("intro-content");
     let vh = window.innerHeight;
+
     mainContainer.addEventListener("scroll", (e) => {
         let panelNum = mainContainer.scrollTop / vh;
         if (panelNum % 2 > 1.5 || panelNum % 2 < 0.5) {
@@ -8,33 +10,33 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             mainContainer.classList.add("rotate-sect");
         }
+        
+        if (panelNum > 0.8 && panelNum < 4.2) {
+            introContent.classList.add("intro-content-active");
+        } else {
+            introContent.classList.remove("intro-content-active");
+        }
+        if (panelNum < 0.8) {
+            introContent.classList.add("intro-content-top");
+        } else {
+            introContent.classList.remove("intro-content-top");
+        }
+        if (panelNum > 4.2) {
+            introContent.classList.add("intro-content-bottom");
+        } else {
+            introContent.classList.remove("intro-content-bottom");
+        }
 
-        // let graphPanels = [4, 7, 9, 12, 15, 17 ];
-        // let needPanel = false;
-        // for (let i = 0; i < graphPanels.length; i++) {
-        //     const panel = graphPanels[i];
-        //     if (panelNum > panel - 1.5 && panelNum < panel - 0.5) {
-        //         needPanel = true;
-        //         break;
-        //     }
-        // }
-        // if (needPanel) {
-        //     mainContainer.classList.add("graph-sect");
-        // } else {
-        //     mainContainer.classList.remove("graph-sect");
-        // }
+        for (let termNum = 1; termNum <= 3; termNum++) {
+            let term1 = document.getElementById("term-" + termNum.toString());
+            let def1 = document.getElementById("definition-" + termNum.toString());
+            if (panelNum > termNum + 0.5 && panelNum < termNum + 1.5) {
+                term1.classList.add("term-active");
+                def1.classList.add("definition-active");
+            } else {
+                term1.classList.remove("term-active");
+                def1.classList.remove("definition-active");
+            }
+        }
     });
 });
-
-// function quoteButton(groupID, direction, max) {
-//     let active = document.querySelector("#anecdotes-" + groupID.toString() + " .quote-active");
-//     active.classList.remove("quote-active");
-//     let nextID = parseInt(active.id.toString().slice(-1)) + direction;
-//     if (nextID == 0) {
-//         nextID = max;
-//     } else if (nextID > max) {
-//         nextID = 1;
-//     }
-//     let next = document.getElementById("quote-" + groupID.toString() + "-" + nextID.toString());
-//     next.classList.add("quote-active");
-// }

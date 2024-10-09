@@ -12,12 +12,11 @@
 :root {
     --dark: #192e63;
     --shadow: #192e63aa;
+    --dark-none: #192e6300;
     --light: #7683ab;
     --white: #ffffff;
 }
 body {
-    /* font-family: "allotrope-variable", sans-serif;
-    font-variation-settings: "wght" 400, "wdth" 100; */
     font-family: "nicholas", sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -25,6 +24,7 @@ body {
     color: var(--dark);
     overflow-y: hidden;
 }
+
 
 /* BACKGROUND */
 
@@ -54,19 +54,6 @@ main::before {
 main.rotate-sect::after {
     rotate: 180deg;
 }
-#graph-background {
-    width: 0;
-    height: 100dvh;
-    background-image: linear-gradient(90deg, #ffffff00 0%, 15%, #ffffffff 50%, 85%, #ffffff00 100%);
-    z-index: -8;
-    opacity: 0;
-    pointer-events: none;
-    transition: width 1s, opacity 1s;
-}
-main.graph-sect #graph-background {
-    width: 100vw;
-    opacity: 1;
-}
 
 
 /* SCROLLING */
@@ -75,7 +62,7 @@ main {
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
     height: 100%;
-    width: 100%;
+    position: relative;
 }
 section {
     scroll-snap-stop: always;
@@ -84,6 +71,8 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 2rem;
+    position: relative;
 }
 
 
@@ -93,7 +82,6 @@ h1 {
     font-family: "nicholas", sans-serif;
     font-weight: 400;
     font-style: italic;
-    width: min(60rem, 90vw);
     font-size: 4rem;
     color: var(--dark);
     text-align: center;
@@ -103,10 +91,6 @@ h2 {
     font-size: 2rem;
     line-height: 1.2;
     text-wrap: pretty;
-}
-#intro h2 {
-    text-align: center;
-    text-wrap: balance;
 }
 blockquote {
     display: flex;
@@ -136,23 +120,133 @@ blockquote p {
 }
 a {
     color: var(--light);
-    margin-top: 0.5rem;
     display: block;
-}
-blockquote a {
     text-align: center;
 }
-#intro h2, #outro h2 {
+blockquote a {
+    margin-top: 0.5rem;
+}
+figcaption a {
+    margin-top: 0.75rem;
+}
+#intro h2, #outro h2, .definition {
     max-width: 50rem;
+}
+
+
+/* INTRO CONTENT */
+
+#intro-content {
+    position: fixed;
+    top: 0;
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s, translate 0.5s;
+}
+#intro-content.intro-content-active {
+    opacity: 1;
+}
+#intro-content.intro-content-top {
+    translate: 0 100vh;
+}
+#intro-content.intro-content-bottom {
+    translate: 0 -100vh;
+}
+#intro-text {
+    max-width: 50rem;
+    text-wrap: pretty;
+}
+.term {
+    font-family: "nicholas", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2rem;
+    line-height: 1;
+    text-wrap: pretty;
+    color: var(--dark);
+    background: linear-gradient(90deg, #ffffff40 0%, 10%, #ffffffff 50%, 90%, #ffffff40 100%);
+    transition: border-bottom 0.5s;
+}
+.term-active {
+    border-bottom: solid 0.15rem var(--dark);
+}
+.definitions {
+    max-width: 50rem;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-content: center;
+    align-items: center;
+}
+.definition {
+    font-family: "nicholas", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    text-wrap: pretty;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    grid-area: 1 / 1 / 2 / 2;
+    opacity: 0;
+    transition: opacity 0.5s, translate 0.5s;
+}
+.definition em {
+    border-bottom: solid 0.1rem var(--dark);
+}
+.definition-active {
+    opacity: 1;
+}
+
+
+/* FOOTER */
+
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding: 4rem 2rem 2rem 2rem;
+    background: linear-gradient(#ffffff00 0%, 40%, #ffffffc0 100%);
+}
+#footer-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* text-align: center; */
+    margin-bottom: 0.75rem;
+    position: relative;
+}
+#footer-label::before, #footer-label::after {
+    content: "";
+    display: block;
+    width: 2rem;
+    height: 0.075rem;
+    background-color: var(--dark);
+    top: 50%;
+    position: relative;
+}
+#footer-label::before {
+    left: -0.5rem;
+}
+#footer-label::after {
+    right: -0.5rem;
+}
+#footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }
 
 
 /* SECTION GRIDS */
 
-section {
-    padding: 2rem;
-    position: relative;
-}
 .content {
     display: grid;
     grid-template-columns: 1fr 0.1rem 1.5fr 0.1rem 1fr;
@@ -166,7 +260,7 @@ section {
     position: absolute;
     width: calc(100% - 4rem);
     margin-inline: 2rem;
-    height: 0.05rem;
+    height: 0.1rem;
     background: var(--dark);
 }
 .content::after {
@@ -221,6 +315,7 @@ section {
 .rule-3 {
     grid-area: rule3;
 }
+
 
 /* GRAPHS */
 
