@@ -42,8 +42,8 @@
 // });
 document.addEventListener("DOMContentLoaded", function() {
     let mainContainer = document.getElementById("main-container");
-    const panelCount = 5;
+    const panelCount = 16;
     mainContainer.addEventListener("scroll", (e) => {
-        document.body.style.setProperty("--scroll", (panelCount + 1) * mainContainer.scrollTop / mainContainer.scrollHeight);
+        document.body.style.setProperty("--scroll", panelCount * mainContainer.scrollTop / mainContainer.scrollHeight);
     });
 });

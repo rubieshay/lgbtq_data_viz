@@ -83,16 +83,13 @@ section {
     top: 0;
     height: 100dvh;
 }
-section.content-1 {
+section.content-1h {
     height: 100dvh;
 }
-section.content-2 {
+section.content-2h {
     height: 200dvh;
 }
-section.content-3 {
-    height: 300dvh;
-}
-section.content-4 {
+section.content-4h {
     height: 400dvh;
 }
 
@@ -112,32 +109,7 @@ h2 {
     font-size: 2rem;
     line-height: 1.2;
     text-wrap: pretty;
-}
-blockquote {
-    display: flex;
-    flex-direction: column;
-}
-blockquote p {
-    font-family: "nicholas", sans-serif;
-    font-weight: 400;
-    font-style: italic;
-    font-size: 1.25rem;
-    line-height: 1.2;
-    padding-inline: 1rem;
-    padding-block: 0.5rem;
-    color: var(--dark);
-    text-wrap: pretty;
-}
-.quote-mark {
-    display: block;
-    width: 2rem;
-    height: 2rem;
-}
-.quote-left {
-    rotate: 180deg;
-}
-.quote-right {
-    align-self: end;
+    max-width: 55rem;
 }
 a {
     color: var(--light);
@@ -150,24 +122,12 @@ blockquote a {
 figcaption a {
     margin-top: 0.75rem;
 }
-#intro h2, #outro h2, .definition {
-    max-width: 50rem;
-}
 
 
 /* INTRO CONTENT */
 
 #intro-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    pointer-events: none;
-}
-#intro-text {
-    max-width: 50rem;
-    text-wrap: pretty;
+    gap: 4rem;
 }
 .term {
     font-family: "nicholas", sans-serif;
@@ -183,12 +143,10 @@ figcaption a {
     animation-fill-mode: both;
 }
 .definitions {
-    max-width: 50rem;
-    position: relative;
+    max-width: 55rem;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    gap: 1rem;
     justify-content: center;
     align-items: center;
 }
@@ -198,7 +156,7 @@ figcaption a {
     font-style: italic;
     text-wrap: pretty;
     font-size: 1.25rem;
-    line-height: 1.2;
+    line-height: 1.375;
     grid-area: 1 / 1 / 2 / 2;
     animation: fade 1.5s linear;
     animation-play-state: paused;
@@ -216,7 +174,6 @@ figcaption a {
 #def-3, #term-3 {
     animation-delay: calc(3.25s - var(--scroll)*1s);
 }
-
 @keyframes fade {
     0% {
         opacity: 0;
@@ -240,119 +197,87 @@ figcaption a {
     }
 }
 
-/* FOOTER */
 
-footer {
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    padding: 4rem 2rem 2rem 2rem;
-    background: linear-gradient(#ffffff00 0%, 40%, #ffffffc0 100%);
-}
-#footer-label {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.75rem;
-    position: relative;
-}
-#footer-label::before, #footer-label::after {
-    content: "";
-    display: block;
-    width: 2rem;
-    height: 0.075rem;
-    background-color: var(--dark);
-    top: 50%;
-    position: relative;
-}
-#footer-label::before {
-    left: -0.5rem;
-}
-#footer-label::after {
-    right: -0.5rem;
-}
-#footer-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-}
+/* MAIN CONTENT */
 
-
-/* SECTION GRIDS */
-
-.content {
-    display: grid;
-    grid-template-columns: 1fr 0.1rem 1.5fr 0.1rem 1fr;
-    grid-template-rows: 1fr 0.1rem 3fr;
-    gap: 1rem;
-    align-items: center;
-    justify-content: center;
-}
-.content::before, .content::after {
-    content: "";
-    position: absolute;
-    width: calc(100% - 4rem);
-    margin-inline: 2rem;
-    height: 0.1rem;
-    background: var(--dark);
-}
-.content::after {
-    bottom: 0.1rem;
-}
-.content::before {
-    top: 0.1rem;
-}
-.content-layout-1 {
-    grid-template-areas: "title title title rule1 .    "
-                         "rule2 rule2 rule2 rule2 rule2"
-                         "quote rule3 graph graph graph";
-}
-.content-layout-2 {
-    grid-template-areas: ".     rule1 title title title"
-                         "rule2 rule2 rule2 rule2 rule2"
-                         "graph graph graph rule3 quote";
-}
-.content h2 {
-    grid-area: title;
-}
-.content blockquote {
-    grid-area: quote;
-}
-.content .graph {
-    grid-area: graph;
-    width: 100%;
-    height: 100%;
-    background: #ffffff66;
-    padding: 1rem;
+.sticky-content {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    pointer-events: none;
 }
-.rule {
-    background: var(--dark);
-}
-.rule-h {
+.graph-quote {
     width: 100%;
-    height: 0.1rem;
-}
-.rule-v {
-    width: 0.1rem;
+    max-height: calc(70dvh - 8rem);
     height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
 }
-.rule-1 {
-    grid-area: rule1;
+blockquote, .graph {
+    justify-self: center;
+    grid-area: 1 / 1 / 2 / 2;
+    animation: fade 1.5s linear;
+    animation-play-state: paused;
+    animation-fill-mode: both;
 }
-.rule-2 {
-    grid-area: rule2;
+.content-rule {
+    width: 100%;
+    max-width: 55rem;
+    height: 0.1rem;
+    background-color: var(--dark);
 }
-.rule-3 {
-    grid-area: rule3;
+
+
+/* QUOTES */
+
+blockquote {
+    display: flex;
+    flex-direction: column;
+    max-width: 35rem;
+    justify-content: center;
+}
+blockquote p {
+    font-family: "nicholas", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.375;
+    padding-inline: 1rem;
+    padding-block: 0.5rem;
+    color: var(--dark);
+    text-wrap: pretty;
+}
+blockquote p em {
+    border-bottom: solid 0.1rem var(--dark);
+    background: linear-gradient(90deg, #ffffff40 0%, 10%, #ffffffff 50%, 90%, #ffffff40 100%);
+}
+.quote-mark {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+}
+.quote-left {
+    rotate: 180deg;
+}
+.quote-right {
+    align-self: end;
 }
 
 
 /* GRAPHS */
 
+.graph {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 55rem;
+    padding: 1.5rem;
+    background: linear-gradient(90deg, #ffffff00 0%, 10%, #ffffffa0 50%, 90%, #ffffff00 100%);
+}
 h3 {
     font-weight: 700;
     text-align: center;
@@ -442,4 +367,52 @@ figcaption p {
     display: block;
     max-width: 35rem;
     line-height: 1.2;
+}
+
+
+/* FOOTER */
+
+#outro > .sticky-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr max-content;
+    padding-inline: 0;
+}
+#outro h2 {
+    padding-inline: 2rem;
+    justify-self: center;
+    align-self: center;
+    text-wrap: pretty;
+}
+footer {
+    padding: 4rem 2rem 2rem 2rem;
+    background: linear-gradient(#ffffff00 0%, 40%, #ffffffc0 100%);
+}
+#footer-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+    position: relative;
+}
+#footer-label::before, #footer-label::after {
+    content: "";
+    display: block;
+    width: 2rem;
+    height: 0.075rem;
+    background-color: var(--dark);
+    top: 50%;
+    position: relative;
+}
+#footer-label::before {
+    left: -0.5rem;
+}
+#footer-label::after {
+    right: -0.5rem;
+}
+#footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 }
