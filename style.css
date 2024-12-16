@@ -316,6 +316,15 @@ figure {
     display: flex;
     grid-area: bal;
 }
+.bottom-axis-labels div {
+    container: bottom-label / inline-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bottom-axis-labels div span {
+    font-size: min(18cqw, 0.875rem);
+}
 .axis-title {
     font-weight: 700;
 }
